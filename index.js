@@ -4,14 +4,19 @@ const db = require('./config/db')
 const consign = require('consign')
 
 consign()
-    .include('./config/passport.js')
-    .then('./config/middlewares.js')
+    //.include('./config/passport.js')
+    //.then('./config/middlewares.js')
     .then('./api')
-    .then('./config/routes.js')
+    //.then('./config/routes.js')
     .into(app)
 
 app.db = db
 
-app.listen(3000, () => {
-    console.log('Backend executando...')
-})
+app.db.select('*').from("tasks")
+.then((rows) => console.log(rows))
+.catch(err => console.log(err))
+.finally(() => console.log('event complete'))
+
+console.log(app.users)
+
+//process.exit()
