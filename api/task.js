@@ -1,7 +1,15 @@
 const moment = require('moment')
 
 module.exports = app => {
-    const getTasks = (req, res) => {
+
+    const getTasks = () => {
+        app.db.select('*').from("tasks")
+            .then((rows) => console.log(rows))
+            .catch(err => console.log(err))
+            .finally(() => console.log('event complete'))
+    }
+
+    /*const getTasks = (req, res) => {
         const date = req.query.date ? req.query.date
             : moment().endOf('day').toDate()
 
@@ -11,7 +19,7 @@ module.exports = app => {
             .orderBy('estimateAt')
             .then(tasks => res.json(tasks))
             .catch(err => res.status(500).json(err))
-    }
+    }*/
 
     const save = (req, res) => {
         if(!req.body.desc || !req.body.desc.trim()) {

@@ -11,12 +11,5 @@ consign()
     .into(app)
 
 app.db = db
-
-app.db.select('*').from("tasks")
-.then((rows) => console.log(rows))
-.catch(err => console.log(err))
-.finally(() => console.log('event complete'))
-
-console.log(app.users)
-
+console.log(app.api.task.getTasks());
 //process.exit()
