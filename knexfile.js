@@ -1,4 +1,4 @@
-// Update with your config settings.
+// Config do data warehouse
 
 module.exports = {
     client: 'postgresql',
